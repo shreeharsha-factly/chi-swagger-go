@@ -4,9 +4,9 @@
 # Get go packages
 Run 
 1) *go get*
-2)   **GO111MODULE=off go get -u github.com/go-swagger/go-swagger/cmd/swagger**
+2)   **go get -u github.com/go-swagger/go-swagger/cmd/swagger**
 3) to create spec file run
- **GO111MODULE=off swagger generate spec -o ./swagger.yaml --scan-models**
+ **swagger generate spec -o ./swagger.yaml --scan-models**
 
 # To start
 run these commands parallelly
