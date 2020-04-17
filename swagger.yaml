@@ -1,0 +1,152 @@
+basePath: /
+definitions:
+  User:
+    properties:
+      age:
+        description: the age for this user
+        format: int64
+        type: integer
+        x-go-name: Age
+      email:
+        description: the email for this user
+        type: string
+        x-go-name: Email
+      id:
+        description: the id for this user
+        format: uint64
+        minimum: 1
+        type: integer
+        x-go-name: ID
+      name:
+        description: the name for this user
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/shreeharsha-factly/chi-swagger-go/models
+host: localhost:1323
+info:
+  description: |-
+    the purpose of this application is to provide an application
+    that is using plain go code to define an API
+
+    This should demonstrate all the possible comment annotations
+    that are available to turn go code into a fully compliant swagger 2.0 spec
+  title: Data Portal API.
+  version: 0.0.1
+paths:
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: This will show a user by id.
+      operationId: addUser
+      parameters:
+      - description: single user
+        in: body
+        name: User
+        schema:
+          properties:
+            age:
+              description: the age for this user
+              format: int64
+              type: integer
+              x-go-name: Age
+            email:
+              description: the email for this user
+              type: string
+              x-go-name: Email
+            name:
+              description: the name for this user
+              type: string
+              x-go-name: Name
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/userResponse'
+      summary: Get user by id
+      tags:
+      - users
+  /users/{userId}:
+    delete:
+      description: This will show a user by id.
+      operationId: deleteUser
+      parameters:
+      - in: path
+        name: userId
+        required: true
+        type: string
+        x-go-name: UserID
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/userResponse'
+      summary: Get user by id
+      tags:
+      - users
+    get:
+      description: This will show a user by id.
+      operationId: getUser
+      parameters:
+      - in: path
+        name: userId
+        required: true
+        type: string
+        x-go-name: UserID
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/userResponse'
+      summary: Get user by id
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: This will show a user by id.
+      operationId: updateUser
+      parameters:
+      - description: single user
+        in: body
+        name: User
+        schema:
+          properties:
+            age:
+              description: the age for this user
+              format: int64
+              type: integer
+              x-go-name: Age
+            email:
+              description: the email for this user
+              type: string
+              x-go-name: Email
+            name:
+              description: the name for this user
+              type: string
+              x-go-name: Name
+          type: object
+      - in: path
+        name: userId
+        required: true
+        type: string
+        x-go-name: UserID
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/userResponse'
+      summary: Get user by id
+      tags:
+      - users
+responses:
+  userResponse:
+    description: single user returned in response
+    schema:
+      $ref: '#/definitions/User'
+schemes:
+- http
+- https
+swagger: "2.0"
